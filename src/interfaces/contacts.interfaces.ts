@@ -1,3 +1,4 @@
+import { DeepPartial } from "typeorm";
 import { z } from "zod";
 import {
 	contactSchema,
@@ -6,5 +7,6 @@ import {
 
 type IContact = z.infer<typeof contactSchema>;
 type IReturncontact = z.infer<typeof returnContactSchema>;
+type IUpdateContact = DeepPartial<IContact>;
 
-export { IContact, IReturncontact };
+export { IContact, IReturncontact, IUpdateContact };
