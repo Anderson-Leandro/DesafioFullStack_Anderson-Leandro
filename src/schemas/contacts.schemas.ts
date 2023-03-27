@@ -10,9 +10,16 @@ const contactSchema = z.object({
 const returnContactSchema = contactSchema.extend({
 	id: z.string().uuid(),
 	createdAt: z.date(),
-	user: returnUserSchema,
+	user: returnUserSchema.optional(),
 });
 
 const returnMultipleContactsSchema = returnContactSchema.array();
 
-export { contactSchema, returnContactSchema, returnMultipleContactsSchema };
+const updateContactSchema = contactSchema.partial();
+
+export {
+	contactSchema,
+	returnContactSchema,
+	returnMultipleContactsSchema,
+	updateContactSchema,
+};

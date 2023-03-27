@@ -11,9 +11,14 @@ const validateEmailAlreadyExistsMiddleware = async (
 ) => {
 	const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-	const user = await userRepository.findOneBy({ email: req.body.email });
+	const email: string = req.body.email || "";
+
+	const user = await userRepository.findOneBy({ email: email });
 
 	if (user) {
+		if (user.id === req.user?.id) {
+			return next();
+		}
 		throw new AppError("This email already being used", 400);
 	}
 
