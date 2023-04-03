@@ -15,8 +15,8 @@ const createContactsController = async (req: Request, resp: Response) => {
 };
 
 const listAllContactsController = async (req: Request, resp: Response) => {
-	const contacts = await listAllContactsService();
-
+	const userId = req.user.id;
+	const contacts = await listAllContactsService(userId);
 	return resp.status(200).send(contacts);
 };
 
