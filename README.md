@@ -1,6 +1,4 @@
-## Available Scripts
-
-In the project directory, you can run:
+## Instruções de uso
 
 No diretório do projeto, rodar:
 
